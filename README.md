@@ -53,8 +53,8 @@ docker ps
 
 Para acessar o Jenkins, use um navegador que aceite certificados autoassinado, como o Firefox por exemplo:
 
-https://{IP_DA_SUA_MAQUINA}:8443
-https://localhost:8443
+- https://{IP_DA_SUA_MAQUINA}:8443
+- https://localhost:8443
 
 Ao acessar será solicitado inicialmente uma chave de autorização que você poderá obter em:
 
