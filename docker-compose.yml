@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root
+    ports:
+      - 8443:8443
+      - 50000:50000
+    container_name: my-jenkins
+    volumes:
+      - ./jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./certs/jenkins_keystore.jks:/var/lib/jenkins/jenkins.jks
+    environment:
+      JAVA_OPTS: -Duser.timezone=CET
+      JENKINS_OPTS: --httpPort=-1 --httpsPort=8443 --httpsKeyStore=/var/lib/jenkins/jenkins.jks --httpsKeyStorePassword=mypassword
+
+# EXECUTAR os comandos abaixo:
+#
+# mkdir {certs,jenkins_home}
+# keytool -genkey -keyalg RSA -alias selfsigned -keystore certs/jenkins_keystore.jks -storepass mypassword -keysize 4096
+#
+# docker exec my-jenkins cat /var/jenkins_home/secrets/initialAdminPassword
+# ou
+# cat ./jenkins_home/secrets/initialAdminPassword
