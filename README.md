@@ -3,10 +3,12 @@
 Testando o jenkins localmente usando o docker.
 
 
+
 ### Requerimentos
 
 - docker
 - openssl ( para a criação do certificado "autoassinado" com o comando *keytool* )
+
 
 
 ### Configuração inicial
@@ -14,11 +16,6 @@ Testando o jenkins localmente usando o docker.
 ```bash
 mkdir -p {certs,jenkins_home}
 ```
-
-#
-# docker exec my-jenkins cat /var/jenkins_home/secrets/initialAdminPassword
-# ou
-# cat ./jenkins_home/secrets/initialAdminPassword
 
 
 ### Certificado "autoassinado"
@@ -33,6 +30,7 @@ keytool -genkey -keyalg RSA -alias selfsigned -keystore certs/jenkins_keystore.j
 
 preencha os dados do certicado autoassinado e pode passar para o próximo passo.
 
+
 ### Executando o container
 
 Lavante o container com o comando:
@@ -46,6 +44,7 @@ para verificar execute:
 ```bash
 docker ps
 ```
+
 
 ### Acessando o Jenkins
 
@@ -68,6 +67,7 @@ docker exec my-jenkins cat /var/jenkins_home/secrets/initialAdminPassword
 ```
 
 Depois será preciso instalar os plugins e setar o seu usuário e senha.
+
 
 
 ### Teste realizado no:
